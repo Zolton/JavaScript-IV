@@ -10,14 +10,17 @@ Prototype Refactor
 
 
 "use strict"
-function GameObject (attributes) {
+
+class GameObject {
+constructor  (attributes){
   this.createdAt = attributes.createdAt;
   this.name = attributes.name;
   this.dimensions = attributes.dimensions;
 }
 
-GameObject.prototype.destroy = function  () {
+destroy () {
   return (`${this.name} was removed from the game`)
+}
 }
 
 /*
@@ -27,15 +30,15 @@ GameObject.prototype.destroy = function  () {
   11* should inherit destroy() from GameObject's prototype
 */
 
-function CharacterStats (attribute) {
-  GameObject.call(this, attribute)
+class CharacterStats extends GameObject {
+    constructor (attribute) {
+        super (attribute);
   this.healthPoints = attribute.healthPoints;
-}
+    }
 
-CharacterStats.prototype = Object.create(GameObject.prototype)
-
-CharacterStats.prototype.takeDamage = function(){
+takeDamage (){
   return (`${this.name} took damage`)
+}
 }
 
 /*
@@ -48,17 +51,16 @@ CharacterStats.prototype.takeDamage = function(){
   1111* should inherit takeDamage() from CharacterStats
 */
 
-function Humanoid (attr) {
+class Humanoid extends CharacterStats{
+    constructor  (attr) {
+        super  (attr);
   this.team = attr.team;
   this.weapons = attr.weapons;
   this.language = attr.language;
-  CharacterStats.call(this, attr)
-}
-
-Humanoid.prototype = Object.create(CharacterStats.prototype)
-
-Humanoid.prototype.greet = function () {
+    }
+greet () {
   return (`${this.team} offers a greeting in ${this.language}`)
+}
 }
  
 /*
