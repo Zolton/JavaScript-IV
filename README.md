@@ -69,7 +69,7 @@ const fred = new Instructor({
 });
 ```
 
-111#### Person
+#### Person
 
 * First we need a Person class. This will be our `base-class`
 * Person receives `name` `age` `location` all as props

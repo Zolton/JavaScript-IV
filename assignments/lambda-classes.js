@@ -7,7 +7,7 @@ class Person {
         this.location = location
     }
     speak () {
-        `Hello my name is ${this.name}, I am from ${this.location}`
+        return `Hello my name is ${this.name}, I am from ${this.location}`
     }
 }
 
@@ -19,15 +19,16 @@ class Instructor extends Person {
         this.catchPhrase = attr.catchPhrase
     }
 
-    demo({subject}) {`Today we are learning about ${subject}`
+    demo({subject}) {
+        return `Today we are learning about ${subject}`
 }
-    grade({grade, student, subject}) { `${student} receives a 
-    perfect score in ${subject}`
+    grade({grade, student, subject}) { 
+        return `${student} receives a perfect score in ${subject}`
     }
 }
 
 class Student extends Person {
-    constructor({previousBackground, className, favSubjects}){
+    constructor({name, age, location, previousBackground, className, favSubjects}){
         super({name, age, location});
         this.previousBackground = previousBackground
         this.className = className;
@@ -38,27 +39,44 @@ class Student extends Person {
     }
 
     PRAssignment(){
-        `${this.student.name} has submitted a PR for ${this.subject}`
+        return `${this.student.name} has submitted a PR for ${this.subject}`
     }
     sprintChallenge(){
-        `${this.student.name} has begun sprint challenge on ${this.subject}`
+        return `${this.student.name} has begun sprint challenge on ${this.subject}`
     }
 }
 
 class ProjectManager extends Person {
-    constructor ({gradClassName, favInstructor}){
-    super ({name, age, location});
-    this.gradClassName = gradClassName;
-    this.favInstructor = favInstructor;
+    constructor (attr) {
+    super (attr);
+    this.gradClassName = attr.gradClassName;
+    this.favInstructor = attr.favInstructor;
     }
     standup(){
-        `${person.name} announces to ${channel}, @channel standy times`
+        return `${person.name} announces to ${channel}, @channel 
+        standy times`
     }
     debugsCode(){
-        `${name} debugs ${student.name}'s code on ${subject}`
+        return `${name} debugs ${student.name}'s code on ${subject}`
     }
 
 }
-const gabba = new Instructor({name: "greg", specialty: "noneeee"})
 
-console.log(gabba)
+const testP = new Person ({name: "Fred", age: 30, 
+location: "Outer space"})
+
+console.log(testP);
+console.log(testP.speak())
+
+const testI = new Instructor ({name: "Jim", specialty: "Nothing", favLanguage: "English", age: 45, location: "California", catchPhrase: "It's not my fault the kids are failing"})
+
+
+console.log(testI)
+
+const testS = new Student ({name: "Johnny", age: 21, location: "Californida", previousBackground: "None", className: "Homeroome", favSubjects: "After school"})
+
+console.log(testS)
+
+const testPM = new ProjectManager ({favSubjects: "Grading", className: "Beverly Hills 90210", location: "California", age: 12, name: "Grady McGraderson", previousBackground: "Civil War Veteran", gradClassName: "First class of West Point", favInstructor: "The guy on the $20 bill"})
+
+console.log (testPM)
