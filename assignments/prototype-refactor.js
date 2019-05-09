@@ -12,10 +12,10 @@ Prototype Refactor
 "use strict"
 
 class GameObject {
-constructor  (attr){
-  this.createdAt = attr.createdAt;
-  this.name = attr.name;
-  this.dimensions = attr.dimensions;
+constructor  ({createdAt, name, dimensions}){
+  this.createdAt = createdAt;
+  this.name = name;
+  this.dimensions = dimensions;
 }
 
 destroy () {
@@ -35,6 +35,8 @@ destroy () {
 //         super ({createdAt, name, dimensions});
 //   this.healthPoints = healthPoints;
 //     }
+
+
 class CharacterStats extends GameObject {
     constructor (attribute) {
         super (attribute);
@@ -57,11 +59,11 @@ takeDamage (){
 */
 
 class Humanoid extends CharacterStats{
-    constructor  (attr) {
-        super  (attr);
-  this.team = attr.team;
-  this.weapons = attr.weapons;
-  this.language = attr.language;
+    constructor  ({team, weapons, language}) {
+        super  (...arguments);
+  this.team = team;
+  this.weapons = weapons;
+  this.language = language;
     }
 greet () {
   return (`${this.team} offers a greeting in ${this.language}`)

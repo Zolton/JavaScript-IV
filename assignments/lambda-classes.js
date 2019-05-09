@@ -11,6 +11,7 @@ class Person {
     }
 }
 
+//having a bit of fun switching constructor and super around
 class Instructor extends Person {
     constructor (attr) {
         super (attr);
@@ -46,18 +47,19 @@ class Student extends Person {
     }
 }
 
+// some more fun
 class ProjectManager extends Person {
     constructor (attr) {
     super (attr);
     this.gradClassName = attr.gradClassName;
     this.favInstructor = attr.favInstructor;
     }
-    standup(){
-        return `${person.name} announces to ${channel}, @channel 
+    standUp(channel){
+        return `${this.name} announces to ${channel}, @channel 
         standy times`
     }
-    debugsCode(){
-        return `${name} debugs ${student.name}'s code on ${subject}`
+    debugsCode (name, subject) {
+        return `${this.name} debugs ${name}'s code on ${subject}`
     }
 
 }
@@ -72,6 +74,7 @@ console.log(testP.speak())
 const testI = new Instructor ({name: "Jim", specialty: "Nothing", favLanguage: "English", age: 45, location: "California", catchPhrase: "It's not my fault the kids are failing"})
 
 console.log(testI)
+console.log(testI.name)
 console.log(testI.demo("Math & Calculus"))
 console.log(testI.grade(59, "Jackie", "Gym"))
 
@@ -88,3 +91,5 @@ console.log(testS.sprintChallenge())
 const testPM = new ProjectManager ({favSubjects: "Grading", className: "Beverly Hills 90210", location: "California", age: 12, name: "Grady McGraderson", previousBackground: "Civil War Veteran", gradClassName: "First class of West Point", favInstructor: "The guy on the $20 bill"})
 
 console.log (testPM)
+console.log (testPM.standUp("web20"))
+console.log (testPM.debugsCode(testS.name, "Binary"))
