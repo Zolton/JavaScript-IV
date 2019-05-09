@@ -12,10 +12,10 @@ Prototype Refactor
 "use strict"
 
 class GameObject {
-constructor  (attributes){
-  this.createdAt = attributes.createdAt;
-  this.name = attributes.name;
-  this.dimensions = attributes.dimensions;
+constructor  (attr){
+  this.createdAt = attr.createdAt;
+  this.name = attr.name;
+  this.dimensions = attr.dimensions;
 }
 
 destroy () {
@@ -30,6 +30,11 @@ destroy () {
   11* should inherit destroy() from GameObject's prototype
 */
 
+// class CharacterStats extends GameObject {
+//     constructor ({healthPoints, createdAt, name, dimensions}) {
+//         super ({createdAt, name, dimensions});
+//   this.healthPoints = healthPoints;
+//     }
 class CharacterStats extends GameObject {
     constructor (attribute) {
         super (attribute);
