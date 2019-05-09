@@ -28,21 +28,21 @@ class Instructor extends Person {
 }
 
 class Student extends Person {
-    constructor({name, age, location, previousBackground, className, favSubjects}){
+    constructor({previousBackground, className, favSubjects}){
         super(...arguments);
         this.previousBackground = previousBackground
         this.className = className;
         this.favSubjects = favSubjects
     }
     listsSubjects(){
-        console.log(this.favSubjects)
+        return `${this.favSubjects}`
     }
 
-    PRAssignment(){
-        return `${this.student.name} has submitted a PR for ${this.subject}`
+    PRAssignment(subject){
+        return `${this.name} has submitted a PR for ${subject}`
     }
     sprintChallenge(){
-        return `${this.student.name} has begun sprint challenge on ${this.subject}`
+        return `${this.name} has begun sprint challenge on ${this.subject}`
     }
 }
 
@@ -68,14 +68,22 @@ location: "Outer space"})
 console.log(testP);
 console.log(testP.speak())
 
+
 const testI = new Instructor ({name: "Jim", specialty: "Nothing", favLanguage: "English", age: 45, location: "California", catchPhrase: "It's not my fault the kids are failing"})
+
 console.log(testI)
 console.log(testI.demo("Math & Calculus"))
 console.log(testI.grade(59, "Jackie", "Gym"))
 
-const testS = new Student ({name: "Johnny", age: 21, location: "Californida", previousBackground: "None", className: "Homeroome", favSubjects: "After school"})
+
+const testS = new Student ({name: "Johnny", age: 21, location: "Californida", previousBackground: "None", className: "Homeroome", favSubjects: ["after school", 57, "video games", "selfies"]})
 
 console.log(testS)
+console.log(testS.speak())
+console.log(testS.listsSubjects())
+console.log(testS.PRAssignment("History"))
+console.log(testS.sprintChallenge())
+
 
 const testPM = new ProjectManager ({favSubjects: "Grading", className: "Beverly Hills 90210", location: "California", age: 12, name: "Grady McGraderson", previousBackground: "Civil War Veteran", gradClassName: "First class of West Point", favInstructor: "The guy on the $20 bill"})
 
