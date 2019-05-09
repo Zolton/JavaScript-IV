@@ -19,17 +19,17 @@ class Instructor extends Person {
         this.catchPhrase = attr.catchPhrase
     }
 
-    demo({subject}) {
+    demo(subject) {
         return `Today we are learning about ${subject}`
 }
-    grade({grade, student, subject}) { 
+    grade(grade, student, subject) { 
         return `${student} receives a perfect score in ${subject}`
     }
 }
 
 class Student extends Person {
     constructor({name, age, location, previousBackground, className, favSubjects}){
-        super({name, age, location});
+        super(...arguments);
         this.previousBackground = previousBackground
         this.className = className;
         this.favSubjects = favSubjects
@@ -69,9 +69,9 @@ console.log(testP);
 console.log(testP.speak())
 
 const testI = new Instructor ({name: "Jim", specialty: "Nothing", favLanguage: "English", age: 45, location: "California", catchPhrase: "It's not my fault the kids are failing"})
-
-
 console.log(testI)
+console.log(testI.demo("Math & Calculus"))
+console.log(testI.grade(59, "Jackie", "Gym"))
 
 const testS = new Student ({name: "Johnny", age: 21, location: "Californida", previousBackground: "None", className: "Homeroome", favSubjects: "After school"})
 
