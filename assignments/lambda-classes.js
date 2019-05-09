@@ -26,10 +26,14 @@ class Instructor extends Person {
     grade(grade, student, subject) { 
         return `${student} receives a perfect score in ${subject}`
     }
+    finalGrade(student){
+        return `${student}'s Final grade is ${Math.random() * 100}`
+    }
+   
 }
 
 class Student extends Person {
-    constructor({previousBackground, className, favSubjects}){
+    constructor({previousBackground, className, favSubjects, grade = 50}){
         super(...arguments);
         this.previousBackground = previousBackground
         this.className = className;
@@ -44,6 +48,14 @@ class Student extends Person {
     }
     sprintChallenge(){
         return `${this.name} has begun sprint challenge on ${this.subject}`
+    }
+    graduation(){
+        if (Instructor.finalGrade > 70){
+            return `Pass`
+        }
+        else {
+            return `Fail`
+        }
     }
 }
 
@@ -61,7 +73,9 @@ class ProjectManager extends Person {
     debugsCode (name, subject) {
         return `${this.name} debugs ${name}'s code on ${subject}`
     }
-
+    finalGrade(student){
+        return `${student}'s Final grade is ${Math.random() * 100}`
+    }
 }
 
 const testP = new Person ({name: "Fred", age: 30, 
@@ -92,4 +106,11 @@ const testPM = new ProjectManager ({favSubjects: "Grading", className: "Beverly 
 
 console.log (testPM)
 console.log (testPM.standUp("web20"))
-console.log (testPM.debugsCode(testS.name, "Binary"))
+console.log (testPM.debugsCode(testS.name, "Binary"));
+
+// Sprint challenge test
+
+console.log(testI.finalGrade(testS.name))
+console.log(testPM.finalGrade(testS.name))
+
+console.log(testS.graduation())
